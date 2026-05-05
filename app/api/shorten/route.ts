@@ -26,7 +26,7 @@ export async function POST(req: Request) {
      * - 'ex': Set a Time-To-Live (TTL) of 3 days (expressed in seconds).
      * - After 3 days, Redis will automatically evict this key to save space.
      */
-    await redis.set(shortCode, url); // 3 days
+    await redis.set(shortCode, url, { ex: 3 * 24 * 60 * 60 }); // 3 days
 
     /**
      * 3. Update the "Recent 5 Shortens" Global List
