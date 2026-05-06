@@ -139,6 +139,16 @@ export default function ShortenerPage() {
           </div>
         </section>
       </div>
+
+      <footer className="text-xs text-slate-300 text-center mt-10">
+        Url link in circular Icon by {' '}
+        <a href="https://icon-icons.com/authors/445-alessio-atzeni" className="underline">
+          Alessio Atzeni
+        </a> on {' '}
+        <a href="https://icon-icons.com" className="underline">
+          Icon-Icons.com
+        </a> · CC BY 4.0
+      </footer>
     </div>
   );
 }
