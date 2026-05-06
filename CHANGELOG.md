@@ -1,3 +1,13 @@
+## [1.3.0] - 2026-05-06
+
+🚀 Features
+- Introduce centralized short URL expiry configuration via `/src/config/expiry.ts`
+- Apply `SHORT_URL_EXPIRY_DAYS` to Redis TTL logic for short URL expiration handling
+- Update page UI text to reflect current expiration policy
+
+🔧 Refactor
+- Replace hardcoded expiry values with shared configuration constant across API routes
+
 ## [1.2.0] - 2026-05-06
 
 🚀 Features
