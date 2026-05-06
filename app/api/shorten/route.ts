@@ -1,6 +1,7 @@
 import { generateUniqueCode } from '@/lib/utils';
 import { redis } from '@/lib/redis';
 import { NextResponse } from 'next/server';
+import { SHORT_URL_EXPIRY_DAYS } from '@/config/expiry';
 
 export async function GET() {
   // Get recent 5 short codes from Redis List
@@ -26,7 +27,7 @@ export async function POST(req: Request) {
      * - 'ex': Set a Time-To-Live (TTL) of 3 days (expressed in seconds).
      * - After 3 days, Redis will automatically evict this key to save space.
      */
-    await redis.set(shortCode, url, { ex: 3 * 24 * 60 * 60 }); // 3 days
+    await redis.set(shortCode, url, { ex: SHORT_URL_EXPIRY_DAYS * 24 * 60 * 60 });
 
     /**
      * 3. Update the "Recent 5 Shortens" Global List

@@ -1,0 +1,1 @@
+export const SHORT_URL_EXPIRY_DAYS = 3;
