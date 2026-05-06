@@ -5,13 +5,16 @@ import { useState, useEffect } from 'react';
 export default function ShortenerPage() {
   const [url, setUrl] = useState('');
   const [history, setHistory] = useState<{ short: string; long: string }[]>([]);
+  const [fetching, setFetching] = useState(false);
   const [loading, setLoading] = useState(false);
   const [copiedId, setCopiedId] = useState<string | null>(null);
 
   const fetchHistory = async () => {
+    setFetching(true);
     const res = await fetch('/api/shorten');
     const data = await res.json();
     setHistory(data);
+    setFetching(false);
   };
 
   useEffect(() => {
@@ -133,8 +136,14 @@ export default function ShortenerPage() {
                 </button>
               </div>
             ))}
-            {history.length === 0 && (
+            {!fetching && history.length === 0 && (
               <p className="text-center py-10 text-slate-400 italic">No records found yet</p>
+            )}
+            { fetching && (
+              <div className="flex flex-col items-center justify-center py-10 text-slate-400">
+                <div className="w-6 h-6 border-4 border-teal-500 border-t-transparent rounded-full animate-spin mb-3"></div>
+                <p className="italic">Loading...</p>
+              </div>
             )}
           </div>
         </section>
