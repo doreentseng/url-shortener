@@ -58,6 +58,7 @@ export default function ShortenerPage() {
           <h1 className="text-4xl font-extrabold text-slate-900 tracking-tight">URL Shortener</h1>
           <p className="mt-1 text-slate-600">Ultra-fast redirection powered by Edge Runtime</p>
           <div className="mt-1 text-sm text-slate-400">
+            <span>
             by{' '}
             <a 
               href="https://doreentseng.github.io/"
@@ -67,6 +68,9 @@ export default function ShortenerPage() {
             >
               @doreentseng
             </a>
+            </span>
+            <span className="text-slate-300">{' '}•{' '}</span>
+            <span className="font-mono">v{process.env.NEXT_PUBLIC_APP_VERSION}</span>
           </div>
         </header>
 
