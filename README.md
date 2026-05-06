@@ -36,3 +36,7 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 
 node v20.19.0
+
+## Credits
+
+Url link in circular Icon by Alessio Atzeni on <a href="https://icon-icons.com/authors/445-alessio-atzeni">Icon-Icons.com</a> Licensed under CC BY 4.0
