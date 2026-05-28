@@ -2,11 +2,13 @@
 
 import { SHORT_URL_EXPIRY_DAYS } from '@/config/expiry';
 import { useState, useEffect } from 'react';
+import type { RecentShortUrl } from '@/types/short-url';
+import { StatusBadge } from '@/components/StatusBadge';
 
 export default function ShortenerPage() {
   const [url, setUrl] = useState('');
   const [validationError, setValidationError] = useState('');
-  const [history, setHistory] = useState<{ short: string; long: string }[]>([]);
+  const [history, setHistory] = useState<RecentShortUrl[]>([]);
   const [fetching, setFetching] = useState(false);
   const [loading, setLoading] = useState(false);
   const [copiedId, setCopiedId] = useState<string | null>(null);
@@ -199,13 +201,24 @@ export default function ShortenerPage() {
                   <p className='text-teal-600 font-mono font-medium truncate'>
                     {window.location.origin}/{item.short}
                   </p>
+
                   <p
-                    className={`text-xs truncate mt-1 ${
+                    className={`text-sm truncate mt-1 ${
                       item.long ? 'text-slate-400' : 'text-red-500 font-medium'
                     }`}
                   >
                     {item.long || 'URL not found'}
                   </p>
+
+                  <div className='flex items-center gap-2 mt-2 flex-wrap'>
+                    <StatusBadge status={item.status} />
+
+                    {item.status === 'active' && item.expiresAt && (
+                      <span className='text-xs text-slate-500'>
+                        Expires at {new Date(item.expiresAt).toLocaleString()}
+                      </span>
+                    )}
+                  </div>
                 </div>
                 <button
                   onClick={() => handleCopy(item.short)}
