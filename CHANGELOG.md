@@ -1,3 +1,32 @@
+## [1.4.0] - 2026-05-28
+
+🚀 Features
+
+- Extend short URL API response with:
+  - ttl (remaining time to live from Redis)
+  - status (active | persistent | expired)
+  - expiresAt (computed expiration timestamp)
+- Introduce shared type definitions in `types/short-url.ts`
+- Add reusable `StatusBadge` component
+
+🎨 UI / UX
+
+- Improve Recent Activity view by displaying:
+  - Status badge for each short URL
+  - Expiration time for active links
+- Enhance visual hierarchy of URL metadata
+
+🔧 Behavior Changes
+
+- Update redirect status code from 302 to 307
+  - Preserve HTTP method during redirection
+  - Improve correctness for non-GET requests
+
+🔧 Refactor
+
+- Centralize short URL domain types and status representation
+- Improve separation of API response structure and UI logic
+
 ## [1.3.1] - 2026-05-23
 
 🚀 Features
