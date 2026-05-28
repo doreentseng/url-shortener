@@ -1,4 +1,3 @@
-
 import { NextRequest, NextResponse } from 'next/server';
 import { redis } from '@/lib/redis';
 
@@ -9,9 +8,9 @@ export async function middleware(req: NextRequest) {
 
   // 1. 過濾不需要攔截的路徑 (首頁、API、靜態檔案)
   if (
-    path === '/' || 
-    path.startsWith('/api') || 
-    path.startsWith('/_next') || 
+    path === '/' ||
+    path.startsWith('/api') ||
+    path.startsWith('/_next') ||
     path.includes('.')
   ) {
     return NextResponse.next();
@@ -25,9 +24,11 @@ export async function middleware(req: NextRequest) {
 
   console.log(`Short code: ${shortCode}, Long URL: ${longUrl}`);
 
-  // 4. 若找到，執行 302 跳轉；若無，進入 404
+  // 4. 若找到，執行 307 跳轉；若無，進入 404
   if (longUrl) {
-    return NextResponse.redirect(new URL(longUrl, req.url));
+    return NextResponse.redirect(new URL(longUrl, req.url), {
+      status: 307,
+    });
   }
 
   return NextResponse.next();
