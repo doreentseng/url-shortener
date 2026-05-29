@@ -1,3 +1,18 @@
+## [1.5.0] - 2026-05-29
+
+🚀 Features
+
+- Added persistent demo activity section with static short URL entries
+- Introduced permanent activity showcase data for UI demonstration
+
+🔧 Behavior Changes
+
+- Fixed runtime error caused by accessing `window` during SSR
+
+🔧 Refactor
+
+- Moved `window.location.origin` into client-side state initialization
+
 ## [1.4.0] - 2026-05-28
 
 🚀 Features
