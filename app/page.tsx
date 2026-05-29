@@ -6,6 +6,7 @@ import type { RecentShortUrl } from '@/types/short-url';
 import { StatusBadge } from '@/components/StatusBadge';
 
 export default function ShortenerPage() {
+  const [origin, setOrigin] = useState('');
   const [url, setUrl] = useState('');
   const [validationError, setValidationError] = useState('');
   const [history, setHistory] = useState<RecentShortUrl[]>([]);
@@ -38,6 +39,7 @@ export default function ShortenerPage() {
   };
 
   useEffect(() => {
+    setOrigin(window.location.origin);
     fetchHistory();
   }, []);
 
@@ -199,7 +201,7 @@ export default function ShortenerPage() {
               >
                 <div className='flex-1 min-w-0 pr-4'>
                   <p className='text-teal-600 font-mono font-medium truncate'>
-                    {window.location.origin}/{item.short}
+                    {origin}/{item.short}
                   </p>
 
                   <p
