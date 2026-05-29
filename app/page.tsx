@@ -5,6 +5,16 @@ import { useState, useEffect } from 'react';
 import type { RecentShortUrl } from '@/types/short-url';
 import { StatusBadge } from '@/components/StatusBadge';
 
+const PERSISTENT_HISTORY: RecentShortUrl[] = [
+  {
+    short: 'twLgDN',
+    long: 'https://www.google.com/maps/place/Taipei+101+Shopping+center/@25.0341017,121.5642863,19z/data=!3m1!5s0x3442abb6d95eb43b:0xbfc3edc9e6aa3050!4m6!3m5!1s0x3442abb6da80a7ad:0xacc4d11dc963103c!8m2!3d25.0341222!4d121.5640212!16s%2Fg%2F11fx91ft3n?entry=ttu&g_ep=EgoyMDI2MDQyOS4wIKXMDSoASAFQAw%3D%3D',
+    ttl: -1,
+    status: 'persistent',
+    expiresAt: null,
+  },
+];
+
 export default function ShortenerPage() {
   const [origin, setOrigin] = useState('');
   const [url, setUrl] = useState('');
@@ -188,9 +198,51 @@ export default function ShortenerPage() {
           </p>
         </div>
 
-        {/* Recent Activity Section */}
         <section>
           <h2 className='text-sm font-semibold text-slate-500 uppercase tracking-wider mb-4 px-2'>
+            Permenent Activity for DEMO
+          </h2>
+          <div className='space-y-3'>
+            {PERSISTENT_HISTORY.map((item, index) => (
+              <div
+                key={index}
+                className='bg-white p-4 rounded-md border border-slate-100 flex items-center justify-between shadow-sm hover:shadow-md transition-shadow group'
+              >
+                <div className='flex-1 min-w-0 pr-4'>
+                  <p className='text-teal-600 font-mono font-medium truncate'>
+                    {origin}/{item.short}
+                  </p>
+
+                  <p
+                    className={`text-sm truncate mt-1 ${
+                      item.long ? 'text-slate-400' : 'text-red-500 font-medium'
+                    }`}
+                  >
+                    {item.long || 'URL not found'}
+                  </p>
+
+                  <div className='flex items-center gap-2 mt-2 flex-wrap'>
+                    <StatusBadge status={item.status} />
+                  </div>
+                </div>
+                <button
+                  onClick={() => handleCopy(item.short)}
+                  className={`text-sm px-4 py-2 rounded-md transition-all duration-200 whitespace-nowrap cursor-pointer ${
+                    copiedId === item.short
+                      ? 'bg-green-100 text-green-700'
+                      : 'bg-slate-50 text-slate-600 hover:bg-teal-50 hover:text-teal-600'
+                  }`}
+                >
+                  {copiedId === item.short ? 'Copied!' : 'Copy'}
+                </button>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Recent Activity Section */}
+        <section>
+          <h2 className='text-sm font-semibold text-slate-500 uppercase tracking-wider mt-6 mb-4 px-2'>
             Recent Activity (Last 5)
           </h2>
           <div className='space-y-3'>
