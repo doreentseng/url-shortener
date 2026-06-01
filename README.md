@@ -1,3 +1,9 @@
+👻 Live Demo：[點我看 demo](https://url-shortener-doe.vercel.app/)
+
+本專案是文章《短網址服務實作：基於 Next.js 與 Upstash Redis 的短網址服務實作與架構分析》的配套範例程式碼。
+
+一個展示如何實作具備低延遲跳轉能力的短網址系統。透過 Next.js 的全端架構與邊緣運算（Edge Computing）特性，將轉址邏輯從傳統的後端 API 移至 Middleware 處理。
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
