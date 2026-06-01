@@ -1,3 +1,10 @@
+## [1.5.1] - 2026-06-01
+
+🔧 Changes
+
+- Fixed UI text content
+- Fixed related URLs and links
+
 ## [1.5.0] - 2026-05-29
 
 🚀 Features
