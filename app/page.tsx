@@ -192,7 +192,7 @@ export default function ShortenerPage() {
             </svg>
           </div>
           <p className='text-sm text-teal-700 leading-relaxed'>
-            <strong>Quick Tip:</strong> After clicking &quot;Copy&quot;, paste
+            <strong>Quick Tip: </strong> After clicking &quot;Copy&quot;, paste
             the link into a <strong>new browser tab</strong> to verify the
             redirection works instantly!
           </p>
@@ -200,7 +200,7 @@ export default function ShortenerPage() {
 
         <section>
           <h2 className='text-sm font-semibold text-slate-500 uppercase tracking-wider mb-4 px-2'>
-            Permenent Activity for DEMO
+            Permanent Activity for DEMO
           </h2>
           <div className='space-y-3'>
             {PERSISTENT_HISTORY.map((item, index) => (
